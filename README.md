@@ -10,7 +10,7 @@ Welcome to the Kaun Banega Crorepatii (KBC) game, A Python console-based quiz ga
 ## Installation
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/yourusername/kbc-game.git
+   git clone https://github.com/Santosh-Mallick/KBC-GAME.git
 
 2. **Navigate to the Game Directory:**
    ```bash
