@@ -36,7 +36,7 @@ def get_statistics():
     """
     return total_winnings, level
 
-def use_50_50(options, answer):
+def lifeline_5050(options, answer):
     """
     50:50: Eliminates two incorrect options.
 
@@ -55,7 +55,7 @@ def use_50_50(options, answer):
     remaining_options.sort(key=options.index)
     return remaining_options
 
-def use_flip_question():
+def lifeline_flipQuestion():
     """
     Flips The Question
 
@@ -64,7 +64,7 @@ def use_flip_question():
     """
     return random.choice(Data.more_questions)
 
-def use_double_dip(question_data):
+def lifeline_doubleDip(question_data):
     """
     User can answer two times
     Args:
@@ -77,7 +77,7 @@ def use_double_dip(question_data):
         second_attempt = int(input("Enter your second choice (1-4): ")) - 1
         return question_data["options"][second_attempt] == question_data["answer"]
 
-def use_ask_the_expert(answer):
+def lifeline_askTheExpert(answer):
     """
     Answer Is Displayed Directly
 
@@ -124,16 +124,16 @@ def main():
                         return total_winnings, level
                     
                 elif user_choice == 6 and not lifelines_used["50:50"]:
-                    remaining_options = use_50_50(question_data["options"], question_data["answer"])
+                    remaining_options = lifeline_5050(question_data["options"], question_data["answer"])
                     lifelines_used["50:50"] = True
                     
                 elif user_choice == 7 and not lifelines_used["Flip The Question"]:
-                    question_data = use_flip_question()
+                    question_data = lifeline_flipQuestion()
                     lifelines_used["Flip The Question"] = True
                     remaining_options = None
                     
                 elif user_choice == 8 and not lifelines_used["Double Dip"]:
-                    if use_double_dip(question_data):
+                    if lifeline_doubleDip(question_data):
                         total_winnings += Data.level_winnings[level]
                         print("✅️ Correct answer! You Won", Data.level_winnings[level], "points.\n")
                         level += 1
@@ -145,7 +145,7 @@ def main():
                         return total_winnings, level
                    
                 elif user_choice == 9 and not lifelines_used["Ask The Expert"]:
-                    use_ask_the_expert(question_data["answer"])
+                    lifeline_askTheExpert(question_data["answer"])
                     lifelines_used["Ask The Expert"] = True
                     
                 else:
